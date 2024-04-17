@@ -29,6 +29,10 @@
 - multiRetrievalTool
 - LoaderTools: 不區分檔案都可以load 並改loader 加速
 
+## Stream
+- [LangChain Streaming](https://www.youtube.com/watch?v=juzD9h9ewV8)
+- [AgentGPT](https://agentgpt.reworkd.ai/zh)
+
 
 
 

@@ -56,8 +56,7 @@ docker cp <container_id>:/app/requirements.txt .
 docker-compose up
 docker-compose down
 docker-compose ps
-docker-compose logs
-docker-compose exec <service_name> /bin/bash
+docker-compose rm
 ```
 
 ```
@@ -89,21 +88,27 @@ telnet ifp_organizer 80
 ### Docker 比喻
 
 Docker 是一個開源平台，用於開發、交付和運行應用程序。以下是一些比喻來幫助理解 Docker 的概念：
-
 - **映像檔（Image）**：就像系統安裝映像檔，它包含了應用程序運行所需的所有文件和配置。
-  
 - **容器（Container）**：就像被安裝好的作業系統，它是從映像檔啟動的運行實例，具有自己的文件系統、網絡和進程空間。
 
 ### Docker 流程
-
 1. **新增 Dockerfile**：創建一個名為 Dockerfile 的文本文件，用於定義映像檔的結構和內容。
-
 2. **找到適合的基礎映像檔**：通常從 Docker Hub 上找到適合你應用程序的基礎映像檔，例如 Python、Node.js 等。
-
 3. **複製原始碼**：在 Dockerfile 中添加命令來複製你的應用程序原始碼到容器中。
-
 4. **安裝依賴項**：如果你的應用程序有依賴項，則需要在 Dockerfile 中添加相應的安裝命令。
-
 5. **設定初始命令**：在 Dockerfile 中定義容器啟動後要執行的初始命令，例如運行應用程序的指令。
 
 一旦 Dockerfile 定義完成，你可以使用 `docker build` 命令來生成映像檔，然後使用 `docker run` 命令來運行容器。
+
+### node 9.7 dockerfile
+```
+FROM node:9.17-stretch-slim
+
+COPY ifp-andon /ifp-andon
+WORKDIR /ifp-andon
+#COPY . .
+RUN npm install --no-optional
+#RUN npm run build
+
+CMD [ "npm", "run", "start"]
+```

@@ -1,25 +1,9 @@
-# Git
-**Git:**
-```
-ghp_
-aDBo
-0ZGAcE8O9
-zJaWeGPwB
-TvZXxQzb0
-jNjPw
-```
-
-**Git Repo:**
-```
-https://github.com/EI-Stack/fast-igp-api.git
-https://github.com/chenyuchenx/fast-api.git
-```
-
 # K8s
 ```
 kubectl config get-contexts
-kubectl config use-context <name> iiipivotenable
-kubectl -n pivotenable get po
+kubectl config current-context
+kubectl config use-context <namespace>
+kubectl -n <namespace> get po
 kubectl get po
 kubectl get secret
 kubectl get secret <secret-file-name> -o yaml
@@ -33,6 +17,28 @@ kubectl edit deploy <<deployment file>>
 kubectl port-forward rtm-ifp-etcd-ff69bb448-ck96j 2379:2379
 kubectl rollout restart deploy ifps-predict-api
 kubectl scale deploy ifps-predict-train --replicas=1
+```
+
+```
+kubectl apply -f deployment.yml -n namespace
+kubectl apply -f service.yml -n namespace
+kubectl apply -f ingress.yml -n namespace
+```
+
+```
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+```
+
+```
+choco install kubernetes-helm
+helm init --canary-image
+helm version
+```
+
+```
+helm list -n ifpsdemo
+helm delete ifps-predict -n ifpsdemo
+helm install ifps-predict . -n ifpsdemo
 ```
 
 # Python
@@ -59,6 +65,15 @@ db.currentOp()
 mongo --host 52.187.110.12:27017 --username e9662ce6-f9ba-4283-91ba-ab5d21e382bb --password bb283e12d5baab193824ab9f6ec2669e --authenticationDatabase admin
 use 6dba1e66-a658-445a-b4cc-cb9602bb2d3e
 mongo --host 192.168.56.237:27017/ifactory -u root  -p 1qaz@WSX3edc --authenticationDatabase SCRAM-SHA-1
+```
+
+### 創建新的database 和 創建 user
+```
+docker exec -it ___________ bash (container id)
+> mongo -u root -p mLvt9SobUrReMhonVWYdsgaGPPu4XyAULYwzKIkRMYiZbxPcQxroot@197a630a48ed --authenticationDatabase admin (username, password)
+> show dbs
+> use _____ (dbs name)
+> db.createUser({user:"root",pwd:"1qaz@WSX3edc",roles:[{role:"readWrite",db:"ifactory"}]})
 ```
 
 # PostgreSQL

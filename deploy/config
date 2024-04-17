@@ -1,0 +1,83 @@
+apiVersion: v1
+clusters:
+- cluster:
+    insecure-skip-tls-verify: true
+    server: https://api-proxy-eks002.sa.wise-paas.com
+  name: eks002
+- cluster:
+    insecure-skip-tls-verify: true
+    server: https://api-proxy-eks005.sa.wise-paas.com
+  name: eks005
+- cluster:
+    insecure-skip-tls-verify: true
+    server: https://api-proxy-eks009.sa.wise-paas.com
+  name: eks009
+- cluster:
+    insecure-skip-tls-verify: true
+    server: https://api-proxy-eks011.hz.wise-paas.com.cn
+  name: eks011
+contexts:
+- context:
+    cluster: eks002
+    namespace: pmc
+    user: 4c34c638-6cb8-11ea-b38e-bacba0c72c73
+  name: eks002-pmc
+- context:
+    cluster: eks002
+    namespace: tienkang
+    user: 4c34c638-6cb8-11ea-b38e-bacba0c72c73
+  name: eks002-tienkang
+- context:
+    cluster: eks005
+    user: 2a87d315-5f65-11ea-b898-fa99721571bc
+  name: eks005
+- context:
+    cluster: eks005
+    namespace: ifpsdemo
+    user: 2a87d315-5f65-11ea-b898-fa99721571bc
+  name: eks005-ifps-demo
+- context:
+    cluster: eks005
+    namespace: ifpsdev
+    user: 2a87d315-5f65-11ea-b898-fa99721571bc
+  name: eks005-ifps-dev
+- context:
+    cluster: eks009
+    user: 4c34c638-6cb8-11ea-b38e-bacba0c72c73
+  name: eks009
+- context:
+    cluster: eks009
+    namespace: dmd
+    user: 4c34c638-6cb8-11ea-b38e-bacba0c72c73
+  name: eks009-dmd
+- context:
+    cluster: eks011
+    namespace: ifp
+    user: 8fc16599-bc62-11eb-90ad-1a0a5b67c9dc
+  name: eks011-ifp
+- context:
+    cluster: eks011
+    namespace: impelex
+    user: 38b7838a-4a40-11eb-b07e-ba636d0a4984
+  name: eks011-impelex
+- context:
+    cluster: eks011
+    namespace: training
+    user: 8fc16599-bc62-11eb-90ad-1a0a5b67c9dc
+  name: eks011-training
+current-context: eks005-ifps-dev
+kind: Config
+preferences: {}
+users:
+- name: 2a87d315-5f65-11ea-b898-fa99721571bc
+  user:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjoiMmE4N2QzMTUtNWY2NS0xMWVhLWI4OTgtZmE5OTcyMTU3MWJjIn0.apt_5KuzBBfJ3glPbxDDyN0E_AycnlCl7Zqb961ky-o
+- name: 38b7838a-4a40-11eb-b07e-ba636d0a4984
+  user:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjoiMzhiNzgzOGEtNGE0MC0xMWViLWIwN2UtYmE2MzZkMGE0OTg0In0.EB4-XF1B6uhjVHHwWIBo5pXKDd48DEMWZyuCE7iTetA
+- name: 4c34c638-6cb8-11ea-b38e-bacba0c72c73
+  user:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjoiNGMzNGM2MzgtNmNiOC0xMWVhLWIzOGUtYmFjYmEwYzcyYzczIn0.RcWsuZ9VtXwHYrhskxqjI8PmTNVtjqqbrWueAlVnXGQ
+- name: 8fc16599-bc62-11eb-90ad-1a0a5b67c9dc
+  user:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjoiOGZjMTY1OTktYmM2Mi0xMWViLTkwYWQtMWEwYTViNjdjOWRjIn0.sKZ6qic0bahVLDTBE5OBxUR3eEuexoP-qGckmW1GaFc

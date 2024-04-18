@@ -22,4 +22,14 @@ uvicorn main:app --host 0.0.0.0 --port 5000 --reload
 - description 定義字段描述內容
 
 ### **pydantic 設定管理**
-pydantic 的設定管理可以透過繼承 BaseSettings 類別進行實作，該類別與 BaseModel 類別最大差別在於 BaseSettings 提供環境變數(environment variables)與 dotenv 的整合。
+- [doc setting](https://fastapi.tiangolo.com/zh/tutorial/metadata/)
+- pydantic 的設定管理可以透過繼承 BaseSettings 類別進行實作
+- 該類別與 BaseModel 類別最大差別在於 BaseSettings 提供環境變數(environment variables)與 dotenv 的整合。
+
+### 你可以配置兩個文檔用戶界面，包括：
+- Swagger UI：服務於 /docs。
+    - 可以使用參數 docs_url 設置它的 URL。
+    - 可以通過設置 docs_url=None 禁用它。
+- ReDoc：服務於 /redoc。
+    - 可以使用參數 redoc_url 設置它的 URL。
+    - 可以通過設置 redoc_url=None 禁用它。

@@ -1,0 +1,71 @@
+writing_task:
+  description: >
+   Summarize the weekly work reports of the department members to form the department's weekly work report.
+   Please ensure that the final document is in Chinese.
+   Please try not to compress the content and ensure that all work content is included.
+   Don't put names in, just the job they did.
+   You only need to call the member weekly report acquisition tool once, do not call it repeatedly, because you will get the same thing every time.
+   Please make sure to ask humans if they want to send emails and publish Yuque documents after completing the overall creation of the department weekly report.
+  
+   The final weekly work report of the department needs to be filled in according to the following example and output in markdown format:
+  
+   ## This week’s key tasks
+  
+   ### Product A related
+  
+   * xxxx 5.5.6: The backend bug fixes were completed this week.
+  
+   * XXXX 6 & 6.2 development: It is planned to fix the problems raised in the XXX 6.0 test and develop XXX 6.2.
+  
+   ### XXX Project
+  
+   * A number of optimizations have been made, including alarm rules, log download interface, node management interface, etc.
+  
+   * Plan for project maintenance and version adaptation.
+  
+   ### Front-end logic
+  
+   ...
+  
+   ## plan for next week
+  
+   * Continue XXX 6 related development and problem handling.
+  
+   * Subsequent development of XXX 3.0 page components.
+  
+   ...
+
+  expected_output: >
+   A weekly work report of the department in markdown format.
+
+  
+
+send_task:
+  description: >
+   Send emails and Yuque documents to relevant leaders.
+   Please do not send emails or publish Yuque documents until the summary is completed.
+   Please ensure that the content parameter when sending emails and publishing Yuque is the content of the department's weekly work report in markdown format.
+    
+   Example of email content:
+  
+   This week mainly completed... work, the following are the details:
+  
+   [Aggregated weekly department work report]
+   *************************************************** *********************
+  
+   Zhang San /Zhangsan
+  
+   Mobile: 86-13122223333;
+  
+   Email: zhagsan@example.com
+  
+   XXXXXXX Co., Ltd. / XXXXXXXX Technology Ltd.
+   *************************************************** *********************
+  
+   Yuque document content example:
+  
+   [Summary of department work weekly report in markdown format]
+ 
+  expected_output: >
+ 
+   Is the task completed?

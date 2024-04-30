@@ -2,7 +2,7 @@ from crewai import Agent, Crew, Process, Task
 from langchain_openai import ChatOpenAI
 from textwrap import dedent
 from pathlib import Path
-import yaml, json
+import importlib, yaml, json
 
 class CrewAIPipline:
 
@@ -40,14 +40,16 @@ class CrewAIPipline:
             backstory = dedent(agent_info.get('backstory', ''))
             allow_delegation = agent_info.get('allow_delegation', False)
             verbose = agent_info.get('verbose', True)
-            agent_methods[agent_name] = self._create_agent_method(role, goal, backstory, allow_delegation, verbose)
+            tools = self.create_tools(agent_info.get('tools', []))
+            agent_methods[agent_name] = self._create_agent_method(role, goal, backstory, allow_delegation, verbose, tools)
         return agent_methods
     
-    def _create_agent_method(self, role, goal, backstory, allow_delegation, verbose):
+    def _create_agent_method(self, role, goal, backstory, allow_delegation, verbose, tools):
         def agent_method():
             return Agent(
                 role=role,
                 goal=goal,
+                tools=tools,
                 backstory=backstory,
                 allow_delegation=allow_delegation,
                 verbose=verbose,
@@ -75,6 +77,17 @@ class CrewAIPipline:
             )
         return task_method
     
+    def create_tools(self, tools_data):
+        tools_func = []
+        for tool in tools_data:
+            module_name, func_name = tool.rsplit('.', 1)
+            tools = importlib.import_module(f'tools')
+            module = getattr(tools, module_name)
+            func = getattr(module, func_name)
+            print(module, func_name)
+            tools_func.append(func)
+        return tools_func
+    
     def run(self, manager=False):
 
         agents = [agent() for agent in self.agent_methods.values()]
@@ -96,7 +109,8 @@ class CrewAIPipline:
 if __name__ == "__main__":
     
     #custom_crew = CrewAIPipline("./crewapp/gamemaker.json", "射擊遊戲")
-    custom_crew = CrewAIPipline("./crewapp/storymaker.yaml", "要先很生氣最後很的悲慘故事")
+    #custom_crew = CrewAIPipline("./crewapp/storymaker.yaml", "要先很生氣最後很的悲慘故事")
+    custom_crew = CrewAIPipline("./crewapp/medihelper.yaml", "Lisa")
     result = custom_crew.run()
     print("\n\n########################")
     print("## Here is you custom crew run result:")

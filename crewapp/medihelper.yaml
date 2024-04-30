@@ -1,0 +1,47 @@
+claseName: MediHelper
+agent:
+  - name: Medical_Analytics_Expert
+    role: Medical Analytics Expert
+    backstory: Based on the search and suggested processing methods of the obtained medical records, search for the most recent solution location based on the suggested methods
+    goal: After analysis, we will provide suggestions for processing methods and the location of the processing methods
+    allow_delegation: false
+    verbose: true
+    tools: [HealthTools.recommended_treatment, HealthTools.scrape_medical_knowledge_content, HealthTools.find_recent_purchases]
+  - name: Personal_Health_Assistant
+    role: Personal Health Assistant
+    backstory: Experts in obtaining and analyzing medical and dietary records.
+    goal: Analyze personal health data to extract insights about dietary history and specific needs
+    allow_delegation: false
+    verbose: true
+    tools: [HealthTools.scrape_diet_content, HealthTools.scrape_medical_knowledge_content, HealthTools.scrape_personal_health_content]
+tasks:
+  - name: 任務1
+    description: |-
+      獲取 {type} 個人健康數據與飲食紀錄
+    expected_output: 個人健康數據與飲食紀錄
+    agent: Personal_Health_Assistant
+  - name: 任務2
+    description: |-
+      根據個人健康數據尋找病因
+    expected_output: 病因
+    agent: Personal_Health_Assistant
+  - name: 任務3
+    description: |-
+      根據病因尋找發病原因
+    expected_output: 血糖 病因 發病原因
+    agent: Personal_Health_Assistant
+  - name: 任務4
+    description: |-
+      根據發病原因尋找建議與處理方式
+    expected_output: 建議與處理方式
+    agent: Medical_Analytics_Expert
+  - name: 任務5
+    description: |-
+      根據找建議與處理方式尋找最近的解決地點
+    expected_output: 最近的解決地點與距離
+    agent: Medical_Analytics_Expert
+  - name: 任務6
+    description: |-
+      將所有思考的過程撰寫成一份全面的報告
+    expected_output: 全面的報告
+    agent: Medical_Analytics_Expert

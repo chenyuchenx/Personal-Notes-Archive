@@ -1,3 +1,9 @@
+# Python 
+
+### 匯出依賴
+chcp 65001
+pip freeze > requirements.txt
+
 # FastAPI
 
 ## 特性

@@ -2,8 +2,7 @@ from datetime import datetime, timedelta, timezone
 
 class TimeConverter:
 
-    def __init__(self):
-        self.default_timezone = timezone.utc
+    default_timezone = timezone.utc
 
     @staticmethod
     def timestamp_to_datetime(timestamp):

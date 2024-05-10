@@ -1,8 +1,15 @@
+from langsmith import Client
 from crewai import Agent, Crew, Process, Task
 from langchain_openai import ChatOpenAI
 from textwrap import dedent
 from pathlib import Path
-import importlib, yaml, json
+from dotenv import load_dotenv
+import importlib, yaml, json, os
+
+load_dotenv()
+
+print(os.getenv('LANGCHAIN_TRACING_V2'))
+client = Client(api_key=os.getenv('LANGCHAIN_API_KEY'))
 
 class CrewAIPipline:
 

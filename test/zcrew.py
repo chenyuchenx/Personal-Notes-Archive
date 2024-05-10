@@ -102,3 +102,6 @@ if __name__ == "__main__":
     print("## Here is you custom crew run result:")
     print("########################\n")
     print(result)
+    #custom_crew = CrewAIPipline("./crewapp/gamemaker.json", "射擊遊戲")
+    #custom_crew = CrewAIPipline("./crewapp/storymaker.yaml", "要先很生氣最後很的悲慘故事")
+    #custom_crew = CrewAIPipline("./crewapp/medihelper.yaml", "Lisa")

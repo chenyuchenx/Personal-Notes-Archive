@@ -3,21 +3,16 @@
 - 25Vg-J7|
 - https://661990540174.signin.aws.amazon.com/console
 
+# https://oneclub.backstage.oneclass.com.tw/login
+- 帳號: ONEWT00787
+- 密碼: nani1688
+
 # kubectl
 - kubectl port-forward service/milvus 19530:19530
 
-
-
-FROM python:3.12-slim
-
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-
-RUN pip install --no-cache-dir poetry
-WORKDIR /app
-COPY pyproject.toml poetry.lock* /app/
-RUN poetry install --no-root --no-cache
-COPY . /app/
-EXPOSE 8501
-ENTRYPOINT ["poetry", "run", "streamlit", "run"]
-CMD ["main.py"]
+# OpenAI
+- OPENAI_API_VERSION="2024-02-01"
+- OPENAI_API_KEY="6df80bdda7634fd281f05b2026c80e72"
+- OPENAI_ENDPOINT="https://oneclass-ai-studio-openai.openai.azure.com/"
+- OPENAI_DEPLOYMENT="gpt-4o"
+- OPENAI_DEPLOYMENT_ADA="3-large"
